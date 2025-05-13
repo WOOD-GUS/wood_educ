@@ -3,64 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cours gratuits pour collégiens - Gustave Woodly">
+  <meta name="description" content="WOOD_EDUC - Cours gratuits pour collégiens par Gustave Woodly">
   <meta name="author" content="Gustave Woodly">
-  <title>Ensemble on va plus loin - Gustave Woodly</title>
+  <title>WOOD_EDUC - Gustave Woodly</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f5f5f5;
-      color: #333;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #1e3a8a;
     }
+
     header {
+      background-color: #1e3a8a;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
-      margin-bottom: 40px;
     }
-    h1 {
-      color: #2c3e50;
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
     }
-    p {
+
+    header p {
+      margin-top: 10px;
       font-size: 1.2em;
+      color: #facc15;
     }
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
+
+    nav {
+      background-color: #ffffff;
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .section {
-      background: white;
+
+    nav a {
+      margin: 0 15px;
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      color: #facc15;
+    }
+
+    .hero {
+      background-color: #facc15;
+      color: #1e3a8a;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h2 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
       padding: 20px;
+    }
+
+    .section {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 25px;
       margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .section h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+
+    .subjects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .subjects a {
+      flex: 1 1 45%;
+      background-color: #1e3a8a;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .subjects a:hover {
+      background-color: #facc15;
+      color: #1e3a8a;
+    }
+
+    footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .subjects a {
+        flex: 1 1 100%;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Ensemble on va plus loin</h1>
-    <p>Cours pour les collégiens</p>
+    <h1>WOOD_EDUC</h1>
+    <p>Créé par Gustave Woodly</p>
   </header>
 
-  <div class="section">
-    <p><strong>Bienvenue !</strong> Je suis <strong>WOODLY</strong> et j’ai créé ce site pour aider les élèves à réussir à l’école.</p>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Tu as le potentiel. Moi, je t’aide à le révéler.</h2>
+    <p>Avec WOOD_EDUC, apprendre devient plus simple, plus clair et plus motivant.</p>
+  </section>
+
+  <div class="container">
+    <div class="section">
+      <h3>Bienvenue !</h3>
+      <p>Je suis <strong>Gustave Woodly</strong>, passionné par l'apprentissage et l'entraide. J'ai créé ce site pour que chaque élève ait une chance de progresser à son rythme.</p>
+    </div>
+
+    <div class="section">
+      <h3>📚 Les matières disponibles</h3>
+      <div class="subjects">
+        <a href="maths.html">Maths</a>
+        <a href="francais.html">Français</a>
+        <a href="svt.html">SVT</a>
+        <a href="histoire_geo.html">Histoire-Géo</a>
+        <a href="informatique.html">Informatique</a>
+        <a href="technologie.html">Technologie</a>
+        <a href="physique_chimie.html">Physique-Chimie</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>À venir</h3>
+      <p>Les cours seront publiés progressivement. Reviens souvent et n’hésite pas à parler du site autour de toi !</p>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>📚 Matières disponibles</h2>
-    <ul>
-      <li>Maths</li>
-      <li>Français</li>
-      <li>SVT</li>
-      <li>Histoire-Géographie</li>
-      <li>Informatique</li>
-      <li>Technologie</li>
-      <li>Physique-Chimie</li>
-    </ul>
-  </div>
+  <footer>
+    &copy; 2025 Gustave Woodly | WOOD_EDUC – Ensemble on va plus loin.
+  </footer>
 
-  <div class="section">
-    <p>Les cours arrivent bientôt ! Reviens régulièrement ou contacte-moi pour en savoir plus.</p>
-  </div>
 </body>
 </html>
