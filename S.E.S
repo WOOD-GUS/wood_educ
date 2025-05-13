@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>S.E.S - Wood_Educ</title>
+</head>
+<body>
+  <h1>S.E.S</h1>
+  <p>Contenu bientôt disponible.</p>
+  <a href="index.html">← Retour à l'accueil</a>
+</body>
+</html>
