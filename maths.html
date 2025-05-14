@@ -2,213 +2,182 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Plateforme Éducative - Mathématiques</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Fractions - Chapitre</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe259, #ffa751);
       color: #333;
+      animation: fadeIn 2s ease-in;
+      transition: all 0.3s ease;
     }
-
     header {
-      background: linear-gradient(to right, #007bff, #ffc107);
+      background: linear-gradient(135deg, #43cea2, #185a9d);
       color: white;
-      padding: 25px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .container {
       padding: 40px 20px;
       text-align: center;
+      font-size: 2rem;
     }
-
-    .section, .chapitres, .cours {
-      display: none;
-    }
-
-    .visible {
-      display: block;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .matiere-btn {
-      background-color: #ffc107;
-      color: white;
-    }
-
-    .matiere-btn:hover {
-      background-color: #e0a800;
-    }
-
-    .chapitre-btn {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .chapitre-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .cours-block {
-      max-width: 900px;
-      margin: auto;
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-left: 8px solid #ffc107;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: left;
-    }
-
-    .cours-block h2 {
-      color: #007bff;
-    }
-
-    .cours-block h3 {
-      color: #0056b3;
-      margin-top: 25px;
-    }
-
-    .cours-block p {
-      font-size: 1.1rem;
-      margin: 10px 0;
-    }
-
-    .example {
-      background-color: #fffbe6;
-      border: 2px dashed #ffc107;
+    .chapter-content {
+      max-width: 1000px;
+      margin: 30px auto;
       padding: 20px;
-      border-radius: 12px;
-      font-size: 1.3rem;
-      color: #333;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      animation: fadeInContent 1.5s ease-in-out;
     }
-
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 50px;
-      padding-bottom: 20px;
-      color: #888;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .example {
+      background: #e0f7fa;
+      padding: 15px;
+      border-left: 6px solid #00bcd4;
+      margin: 15px 0;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .quiz-section {
+      margin-top: 30px;
+    }
+    .quiz-question {
+      margin: 20px 0;
+    }
+    .quiz-button {
+      padding: 12px;
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+    .quiz-button:hover {
+      background-color: #ff5722;
+    }
+    .quiz-result {
+      margin-top: 20px;
+      background-color: #f1f8e9;
+      padding: 15px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Plateforme Éducative</h1>
-  </header>
+<header>
+  <h1>Chapitre : Les Fractions</h1>
+  <p>Apprends à comprendre et à manipuler les fractions</p>
+</header>
 
-  <div class="container">
+<div class="chapter-content">
+  <h2>Qu’est-ce qu’une fraction ?</h2>
+  <p>Une fraction représente une part d’un tout. Elle est composée de deux éléments :</p>
+  <ul>
+    <li><strong>Le numérateur</strong> : le nombre de parts prises</li>
+    <li><strong>Le dénominateur</strong> : le nombre total de parts</li>
+  </ul>
+  
+  <div class="example">Exemple : 3/4 signifie que l'on prend 3 parts sur 4 égales.</div>
 
-    <!-- Accueil : Choix matière -->
-    <div id="accueil" class="section visible">
-      <h2>Choisis ta matière</h2>
-      <div>
-        <button class="btn matiere-btn" onclick="afficherChapitres('maths')">Mathématiques</button>
-        <button class="btn matiere-btn" disabled>Français (bientôt)</button>
-        <button class="btn matiere-btn" disabled>Histoire (bientôt)</button>
-      </div>
-    </div>
+  <h3>Les différents types de fractions</h3>
+  <ul>
+    <li><strong>Fraction propre :</strong> le numérateur est plus petit que le dénominateur (ex : 2/5)</li>
+    <li><strong>Fraction impropre :</strong> le numérateur est plus grand que le dénominateur (ex : 7/4)</li>
+    <li><strong>Fraction apparente :</strong> une fraction qui est égale à un entier (ex : 6/3 = 2)</li>
+  </ul>
 
-    <!-- Chapitres Mathématiques -->
-    <div id="chapitres-maths" class="section chapitres">
-      <h2>Choisis un chapitre</h2>
-      <button class="btn chapitre-btn" onclick="afficherCours('fractions')">Les Fractions</button>
-      <br><br>
-      <button class="btn" onclick="retourAccueil()">Retour</button>
-    </div>
+  <h3>Opérations sur les fractions</h3>
+  
+  <h4>Addition et soustraction de fractions</h4>
+  <p>Si les dénominateurs sont identiques, on additionne ou on soustrait les numérateurs.</p>
+  <div class="example">Exemple : 1/4 + 2/4 = 3/4</div>
 
-    <!-- Cours : Les Fractions -->
-    <div id="cours-fractions" class="section cours">
-      <div class="cours-block">
-        <h2>Chapitre : Les Fractions</h2>
-        <p>Une fraction permet de représenter une partie d’un tout. Exemple : 1/2, 3/4, 5/6.</p>
+  <p>Si les dénominateurs sont différents, il faut d’abord les rendre identiques (trouver un dénominateur commun).</p>
+  <div class="example">Exemple : 1/2 + 1/3 = 3/6 + 2/6 = 5/6</div>
 
-        <h3>1. C’est quoi une fraction ?</h3>
-        <p>Une fraction est composée de deux nombres :</p>
-        <ul>
-          <li><strong>Numérateur</strong> : le chiffre du haut</li>
-          <li><strong>Dénominateur</strong> : le chiffre du bas</li>
-        </ul>
-        <div class="example">
-          Exemple : <br> <span style="font-size:2rem;">3/4</span><br> Cela signifie "3 parts sur 4".
-        </div>
+  <h4>Multiplication de fractions</h4>
+  <p>On multiplie les numérateurs entre eux et les dénominateurs entre eux.</p>
+  <div class="example">Exemple : (2/3) × (4/5) = 8/15</div>
 
-        <h3>2. Addition de fractions</h3>
-        <p>Pour additionner, les dénominateurs doivent être les mêmes.</p>
-        <div class="example">
-          Exemple : <br> 1/4 + 2/4 = 3/4
-        </div>
+  <h4>Division de fractions</h4>
+  <p>On inverse la deuxième fraction et on effectue une multiplication.</p>
+  <div class="example">Exemple : (2/3) ÷ (4/5) = (2/3) × (5/4) = 10/12</div>
 
-        <h3>3. Soustraction de fractions</h3>
-        <p>Comme pour l’addition, les dénominateurs doivent être identiques.</p>
-        <div class="example">
-          Exemple : <br> 5/6 - 2/6 = 3/6
-        </div>
+  <h4>Simplification de fractions</h4>
+  <p>On divise le numérateur et le dénominateur par un même facteur commun.</p>
+  <div class="example">Exemple : 6/12 = 1/2</div>
 
-        <h3>4. Multiplication de fractions</h3>
-        <p>On multiplie les numérateurs entre eux, puis les dénominateurs.</p>
-        <div class="example">
-          Exemple : <br> 2/3 × 3/5 = (2×3)/(3×5) = 6/15
-        </div>
+</div>
 
-        <h3>5. Division de fractions</h3>
-        <p>On garde la première fraction, on inverse la deuxième, puis on multiplie.</p>
-        <div class="example">
-          Exemple : <br> 2/3 ÷ 4/5 = 2/3 × 5/4 = 10/12
-        </div>
+<!-- Quiz -->
+<div class="quiz-section">
+  <h2>Quiz - Teste tes connaissances</h2>
 
-        <br>
-        <button class="btn" onclick="afficherChapitres('maths')">Retour aux chapitres</button>
-      </div>
-    </div>
-
-    <footer>
-      © 2025 - Plateforme Éducative | Tous droits réservés
-    </footer>
+  <div class="quiz-question">
+    <p><strong>1. Quelle est la fraction représentant 5 parts sur 8 ?</strong></p>
+    <input type="text" id="q1">
   </div>
 
-  <script>
-    function afficherChapitres(matiere) {
-      document.querySelectorAll('.section').forEach(div => div.classList.remove('visible'));
-      if (matiere === 'maths') {
-        document.getElementById('chapitres-maths').classList.add('visible');
-      }
-    }
+  <div class="quiz-question">
+    <p><strong>2. Combien vaut 2/3 + 1/3 ?</strong></p>
+    <input type="text" id="q2">
+  </div>
 
-    function afficherCours(chapitre) {
-      document.querySelectorAll('.section').forEach(div => div.classList.remove('visible'));
-      if (chapitre === 'fractions') {
-        document.getElementById('cours-fractions').classList.add('visible');
-      }
-    }
+  <div class="quiz-question">
+    <p><strong>3. Simplifie 9/12</strong></p>
+    <input type="text" id="q3">
+  </div>
 
-    function retourAccueil() {
-      document.querySelectorAll('.section').forEach(div => div.classList.remove('visible'));
-      document.getElementById('accueil').classList.add('visible');
+  <div class="quiz-question">
+    <p><strong>4. Résous : (3/5) × (2/4)</strong></p>
+    <input type="text" id="q4">
+  </div>
+
+  <div class="quiz-question">
+    <p><strong>5. Résous : (5/6) ÷ (2/3)</strong></p>
+    <input type="text" id="q5">
+  </div>
+
+  <button class="quiz-button" onclick="corriger()">Corriger le quiz</button>
+
+  <div id="quiz-result" class="quiz-result"></div>
+</div>
+
+<script>
+function corriger() {
+  let bonnes = 0;
+  let messages = "";
+  const rep = {
+    q1: "5/8",
+    q2: "1",
+    q3: "3/4",
+    q4: "6/20",
+    q5: "15/12"
+  };
+
+  for (let i = 1; i <= 5; i++) {
+    let userRep = document.getElementById("q" + i).value.trim().toLowerCase();
+    if (userRep === rep["q" + i].toLowerCase()) {
+      bonnes++;
+      messages += `<p><strong>Question ${i} :</strong> Bonne réponse !</p>`;
+    } else {
+      messages += `<p><strong>Question ${i} :</strong> Mauvaise réponse. La bonne réponse était <span style="color:green">${rep["q" + i]}</span></p>`;
     }
-  </script>
+  }
+  const note = `Tu as obtenu ${bonnes} / 5`;
+  document.getElementById("quiz-result").innerHTML = `<h3>${note}</h3>` + messages;
+}
+</script>
 
 </body>
 </html>
