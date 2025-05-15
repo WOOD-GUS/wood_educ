@@ -1,233 +1,181 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mathématiques - Cours interactifs</title>
-<style>
-  /* Styles généraux */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: linear-gradient(135deg, #fff9c4 0%, #90caf9 100%);
-    color: #002244;
-  }
-  header {
-    background-color: #003366;
-    color: white;
-    text-align: center;
-    padding: 1.5rem 0;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-    background-color: #ffeb3b;
-    padding: 1rem;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  nav button {
-    cursor: pointer;
-    border: none;
-    background: #1565c0;
-    color: white;
-    font-weight: 700;
-    padding: 0.8rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px #82b1ff;
-    transition: all 0.3s ease;
-  }
-  nav button:hover {
-    background: #003c8f;
-    transform: scale(1.1);
-  }
-  main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  }
-  h2 {
-    color: #1565c0;
-    margin-top: 0;
-  }
-  section {
-    display: none;
-    animation: fadeIn 0.6s ease forwards;
-  }
-  section.active {
-    display: block;
-  }
-  p, ul {
-    line-height: 1.6;
-    font-size: 1.1rem;
-  }
-  ul {
-    list-style-type: square;
-    margin-left: 1.5rem;
-  }
-  .quiz {
-    margin-top: 2rem;
-    background: #e3f2fd;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 6px 15px rgba(21, 101, 192, 0.25);
-  }
-  .quiz h3 {
-    margin-top: 0;
-    color: #0d47a1;
-  }
-  .options button {
-    margin: 0.5rem 0.5rem 0.5rem 0;
-    padding: 0.5rem 1rem;
-    border: 2px solid #1565c0;
-    border-radius: 10px;
-    background: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .options button:hover {
-    background-color: #bbdefb;
-  }
-  .options button.correct {
-    background-color: #4caf50;
-    color: white;
-    border-color: #388e3c;
-  }
-  .options button.incorrect {
-    background-color: #f44336;
-    color: white;
-    border-color: #b71c1c;
-  }
-  .result {
-    margin-top: 0.8rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Les Fractions - Mathématiques</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fefefe;
+    }
+
+    header {
+      background-color: #e67e22;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      color: #fff;
+      text-shadow: 1px 1px #000;
+    }
+
+    nav {
+      background-color: #1abc9c;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    nav button {
+      background-color: #fff;
+      color: #1abc9c;
+      border: none;
+      margin: 0 10px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover {
+      background-color: #16a085;
+      color: #fff;
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #f39c12;
+    }
+
+    .quiz {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .quiz p {
+      font-size: 1.1em;
+    }
+
+    .options button {
+      background-color: #fff;
+      color: #000;
+      margin: 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options button:hover {
+      background-color: #ecf0f1;
+    }
+
+    .correct {
+      background-color: #27ae60 !important;
+      color: white !important;
+    }
+
+    .incorrect {
+      background-color: #c0392b !important;
+      color: white !important;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Mathématiques - Choisis ton chapitre</h1>
-  <p>Apprends les bases et teste-toi avec des quiz interactifs</p>
+  <h1>Chapitre : Les Fractions</h1>
 </header>
 
 <nav>
-  <button onclick="openChapter('fractions')">Fractions</button>
-  <button onclick="openChapter('operations')">Opérations</button>
-  <button onclick="openChapter('simplification')">Simplification</button>
+  <button onclick="showChapter('add')">Addition</button>
+  <button onclick="showChapter('sub')">Soustraction</button>
+  <button onclick="showChapter('muldiv')">Multiplication & Division</button>
 </nav>
 
 <main>
-  <!-- Chapitre Fractions -->
-  <section id="fractions" class="active">
-    <h2>Chapitre 1 : Comprendre les fractions</h2>
-    <p>Une fraction représente une partie d’un tout. Elle s’écrit avec un <strong>numérateur</strong> (en haut) et un <strong>dénominateur</strong> (en bas), séparés par une barre de fraction.</p>
-    <p><em>Exemple :</em> 3/4 signifie 3 parts sur 4 parts égales.</p>
-    <ul>
-      <li><strong>Numérateur :</strong> indique combien de parts on prend</li>
-      <li><strong>Dénominateur :</strong> indique en combien de parts le tout est divisé</li>
-    </ul>
-    <p><strong>Important :</strong> Le dénominateur ne doit jamais être zéro.</p>
-    
-    <div class="quiz">
-      <h3>Quiz rapide - Fractions</h3>
-      <p>Quel est le numérateur de la fraction 7/10 ?</p>
-      <div class="options">
-        <button onclick="quizCheck(this, true)">7</button>
-        <button onclick="quizCheck(this, false)">10</button>
-        <button onclick="quizCheck(this, false)">17</button>
-        <button onclick="quizCheck(this, false)">1</button>
-      </div>
-      <div class="result"></div>
-    </div>
+  <section id="add" class="active">
+    <h2>Addition de Fractions</h2>
+    <p>Quand deux fractions ont le même dénominateur, on les additionne simplement en additionnant les numérateurs.</p>
+    <p><strong>Exemple :</strong> 2/5 + 1/5 = (2+1)/5 = 3/5</p>
+    <p>Si les dénominateurs sont différents, il faut trouver un dénominateur commun.</p>
+    <p><strong>Exemple :</strong> 1/4 + 1/6 = 3/12 + 2/12 = 5/12</p>
 
     <div class="quiz">
-      <h3>Quiz rapide - Fractions</h3>
-      <p>Quel est le dénominateur de 5/8 ?</p>
+      <h3>Quiz :</h3>
+      <p>Combien vaut 2/7 + 3/7 ?</p>
       <div class="options">
-        <button onclick="quizCheck(this, false)">5</button>
-        <button onclick="quizCheck(this, true)">8</button>
-        <button onclick="quizCheck(this, false)">13</button>
-        <button onclick="quizCheck(this, false)">3</button>
+        <button onclick="quizCheck(this, true)">5/7</button>
+        <button onclick="quizCheck(this, false)">6/7</button>
+        <button onclick="quizCheck(this, false)">1/7</button>
+        <button onclick="quizCheck(this, false)">4/7</button>
       </div>
       <div class="result"></div>
     </div>
   </section>
 
-  <!-- Chapitre Opérations -->
-  <section id="operations">
-    <h2>Chapitre 2 : Les opérations avec fractions</h2>
-    <p>Pour effectuer des opérations sur des fractions, il faut souvent les mettre au même dénominateur.</p>
-    <p><strong>Addition :</strong> Additionne les numérateurs si les dénominateurs sont égaux. Sinon, trouve un dénominateur commun.</p>
-    <p><em>Exemple :</em> 1/4 + 2/4 = (1+2)/4 = 3/4</p>
-    <p><strong>Soustraction :</strong> Même principe que pour l’addition.</p>
-    <p><strong>Multiplication :</strong> Multiplie numérateur par numérateur, dénominateur par dénominateur.</p>
-    <p><em>Exemple :</em> 2/3 × 3/5 = (2×3)/(3×5) = 6/15</p>
-    <p><strong>Division :</strong> Inverse la deuxième fraction et multiplie.</p>
-    <p><em>Exemple :</em> 2/3 ÷ 3/5 = 2/3 × 5/3 = 10/9</p>
+  <section id="sub">
+    <h2>Soustraction de Fractions</h2>
+    <p>Les mêmes règles que pour l'addition s'appliquent, mais on soustrait les numérateurs.</p>
+    <p><strong>Exemple :</strong> 5/8 - 2/8 = (5 - 2)/8 = 3/8</p>
 
     <div class="quiz">
-      <h3>Quiz Opérations</h3>
-      <p>Calcule : 1/2 + 1/3 = ?</p>
+      <h3>Quiz :</h3>
+      <p>Combien vaut 6/9 - 2/9 ?</p>
       <div class="options">
-        <button onclick="quizCheck(this, false)">2/5</button>
-        <button onclick="quizCheck(this, true)">5/6</button>
-        <button onclick="quizCheck(this, false)">3/6</button>
-        <button onclick="quizCheck(this, false)">1/5</button>
+        <button onclick="quizCheck(this, false)">2/9</button>
+        <button onclick="quizCheck(this, false)">4/8</button>
+        <button onclick="quizCheck(this, true)">4/9</button>
+        <button onclick="quizCheck(this, false)">3/9</button>
       </div>
       <div class="result"></div>
     </div>
+  </section>
+
+  <section id="muldiv">
+    <h2>Multiplication et Division</h2>
+    <p><strong>Multiplication :</strong> On multiplie les numérateurs entre eux, et les dénominateurs entre eux.</p>
+    <p><strong>Exemple :</strong> 2/3 × 3/4 = 6/12 = 1/2</p>
+
+    <p><strong>Division :</strong> On multiplie la première fraction par l'inverse de la seconde.</p>
+    <p><strong>Exemple :</strong> (3/4) ÷ (2/5) = (3/4) × (5/2) = 15/8</p>
 
     <div class="quiz">
-      <h3>Quiz Opérations</h3>
-      <p>Calcule : 3/4 × 2/5 = ?</p>
+      <h3>Quiz :</h3>
+      <p>Combien vaut (1/2) × (3/5) ?</p>
       <div class="options">
-        <button onclick="quizCheck(this, false)">6/20</button>
+        <button onclick="quizCheck(this, false)">4/10</button>
         <button onclick="quizCheck(this, true)">3/10</button>
-        <button onclick="quizCheck(this, false)">5/9</button>
-        <button onclick="quizCheck(this, false)">7/9</button>
-      </div>
-      <div class="result"></div>
-    </div>
-  </section>
-
-  <!-- Chapitre Simplification -->
-  <section id="simplification">
-    <h2>Chapitre 3 : Simplification des fractions</h2>
-    <p>La simplification consiste à diviser le numérateur et le dénominateur par leur plus grand commun diviseur (PGCD).</p>
-    <p><em>Exemple :</em> 6/9 peut être simplifié en divisant par 3 : (6 ÷ 3)/(9 ÷ 3) = 2/3</p>
-    <p>Une fraction simplifiée est plus facile à manipuler.</p>
-
-    <div class="quiz">
-      <h3>Quiz Simplification</h3>
-      <p>Quelle est la forme simplifiée de 15/25 ?</p>
-      <div class="options">
-        <button onclick="quizCheck(this, false)">3/25</button>
-        <button onclick="quizCheck(this, true)">3/5</button>
-        <button onclick="quizCheck(this, false)">5/3</button>
-        <button onclick="quizCheck(this, false)">15/25</button>
-      </div>
-      <div class="result"></div>
-    </div>
-
-    <div class="quiz">
-      <h3>Quiz Simplification</h3>
-      <p>Quelle est la forme simplifiée de 8/12 ?</p>
-      <div class="options">
-        <button onclick="quizCheck(this, false)">4/6</button>
-        <button onclick="quizCheck(this, true)">2/3</button>
-        <button onclick="quizCheck(this, false)">3/2</button>
-        <button onclick="quizCheck(this, false)">8/12</button>
+        <button onclick="quizCheck(this, false)">2/5</button>
+        <button onclick="quizCheck(this, false)">1/7</button>
       </div>
       <div class="result"></div>
     </div>
@@ -235,33 +183,28 @@
 </main>
 
 <script>
-  // Affiche le chapitre cliqué et cache les autres
-  function openChapter(id) {
-    const sections = document.querySelectorAll('main section');
-    sections.forEach(sec => {
-      sec.classList.remove('active');
+  function showChapter(id) {
+    document.querySelectorAll("section").forEach(sec => {
+      sec.classList.remove("active");
     });
-    document.getElementById(id).classList.add('active');
+    document.getElementById(id).classList.add("active");
   }
 
-  // Gestion des quiz
   function quizCheck(button, isCorrect) {
-    const options = button.parentNode.querySelectorAll('button');
+    const all = button.parentNode.querySelectorAll("button");
     const result = button.parentNode.nextElementSibling;
-
-    options.forEach(btn => {
-      btn.disabled = true;
-      btn.classList.remove('correct', 'incorrect');
+    all.forEach(b => {
+      b.disabled = true;
+      b.classList.remove("correct", "incorrect");
     });
-
     if (isCorrect) {
-      button.classList.add('correct');
-      result.textContent = "Bravo ! C'est la bonne réponse.";
-      result.style.color = "#2e7d32";
+      button.classList.add("correct");
+      result.textContent = "Bonne réponse !";
+      result.style.color = "#2ecc71";
     } else {
-      button.classList.add('incorrect');
-      result.textContent = "Dommage, ce n’est pas la bonne réponse. Essaie encore.";
-      result.style.color = "#c62828";
+      button.classList.add("incorrect");
+      result.textContent = "Faux. Réessaie la prochaine fois !";
+      result.style.color = "#e74c3c";
     }
   }
 </script>
