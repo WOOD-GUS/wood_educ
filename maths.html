@@ -1,207 +1,269 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Mathématiques - Cours Interactifs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f0f8ff, #e6f7ff);
-      color: #003366;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 20px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    .chapter-menu {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-
-    .chapter-btn {
-      background-color: #ffcc00;
-      color: #003366;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .chapter-btn:hover {
-      background-color: #ffc107;
-      transform: scale(1.05);
-    }
-
-    .content {
-      animation: fadeIn 1s;
-    }
-
-    h2 {
-      border-bottom: 3px solid #ffcc00;
-      padding-bottom: 10px;
-    }
-
-    .explanation {
-      background-color: #fff3cd;
-      padding: 15px;
-      margin: 15px 0;
-      border-left: 5px solid #ffcc00;
-      border-radius: 8px;
-    }
-
-    .quiz-box {
-      background-color: #e3f2fd;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    .option {
-      display: block;
-      margin: 10px 0;
-      padding: 12px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .option:hover {
-      background-color: #0056b3;
-    }
-
-    #scoreBox {
-      margin-top: 30px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 18px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathématiques - Cours interactifs</title>
+<style>
+  /* Styles généraux */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: linear-gradient(135deg, #fff9c4 0%, #90caf9 100%);
+    color: #002244;
+  }
+  header {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    background-color: #ffeb3b;
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  nav button {
+    cursor: pointer;
+    border: none;
+    background: #1565c0;
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px #82b1ff;
+    transition: all 0.3s ease;
+  }
+  nav button:hover {
+    background: #003c8f;
+    transform: scale(1.1);
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  h2 {
+    color: #1565c0;
+    margin-top: 0;
+  }
+  section {
+    display: none;
+    animation: fadeIn 0.6s ease forwards;
+  }
+  section.active {
+    display: block;
+  }
+  p, ul {
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  ul {
+    list-style-type: square;
+    margin-left: 1.5rem;
+  }
+  .quiz {
+    margin-top: 2rem;
+    background: #e3f2fd;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 6px 15px rgba(21, 101, 192, 0.25);
+  }
+  .quiz h3 {
+    margin-top: 0;
+    color: #0d47a1;
+  }
+  .options button {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid #1565c0;
+    border-radius: 10px;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .options button:hover {
+    background-color: #bbdefb;
+  }
+  .options button.correct {
+    background-color: #4caf50;
+    color: white;
+    border-color: #388e3c;
+  }
+  .options button.incorrect {
+    background-color: #f44336;
+    color: white;
+    border-color: #b71c1c;
+  }
+  .result {
+    margin-top: 0.8rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <h1>Mathématiques - Cours Interactifs</h1>
-  <p>Choisis ton chapitre pour apprendre avec des explications simples, des exemples, et des quiz amusants !</p>
+  <h1>Mathématiques - Choisis ton chapitre</h1>
+  <p>Apprends les bases et teste-toi avec des quiz interactifs</p>
 </header>
 
-<div class="container">
-  <div class="chapter-menu">
-    <button class="chapter-btn" onclick="loadChapter('fractions')">Chapitre 1 : Les Fractions</button>
-    <button class="chapter-btn" onclick="loadChapter('nombres')">Chapitre 2 : Nombres Entiers</button>
-    <button class="chapter-btn" onclick="loadChapter('geometrie')">Chapitre 3 : Géométrie</button>
-  </div>
+<nav>
+  <button onclick="openChapter('fractions')">Fractions</button>
+  <button onclick="openChapter('operations')">Opérations</button>
+  <button onclick="openChapter('simplification')">Simplification</button>
+</nav>
 
-  <div id="content" class="content"></div>
-  <div id="scoreBox"></div>
-</div>
+<main>
+  <!-- Chapitre Fractions -->
+  <section id="fractions" class="active">
+    <h2>Chapitre 1 : Comprendre les fractions</h2>
+    <p>Une fraction représente une partie d’un tout. Elle s’écrit avec un <strong>numérateur</strong> (en haut) et un <strong>dénominateur</strong> (en bas), séparés par une barre de fraction.</p>
+    <p><em>Exemple :</em> 3/4 signifie 3 parts sur 4 parts égales.</p>
+    <ul>
+      <li><strong>Numérateur :</strong> indique combien de parts on prend</li>
+      <li><strong>Dénominateur :</strong> indique en combien de parts le tout est divisé</li>
+    </ul>
+    <p><strong>Important :</strong> Le dénominateur ne doit jamais être zéro.</p>
+    
+    <div class="quiz">
+      <h3>Quiz rapide - Fractions</h3>
+      <p>Quel est le numérateur de la fraction 7/10 ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, true)">7</button>
+        <button onclick="quizCheck(this, false)">10</button>
+        <button onclick="quizCheck(this, false)">17</button>
+        <button onclick="quizCheck(this, false)">1</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <div class="quiz">
+      <h3>Quiz rapide - Fractions</h3>
+      <p>Quel est le dénominateur de 5/8 ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, false)">5</button>
+        <button onclick="quizCheck(this, true)">8</button>
+        <button onclick="quizCheck(this, false)">13</button>
+        <button onclick="quizCheck(this, false)">3</button>
+      </div>
+      <div class="result"></div>
+    </div>
+  </section>
+
+  <!-- Chapitre Opérations -->
+  <section id="operations">
+    <h2>Chapitre 2 : Les opérations avec fractions</h2>
+    <p>Pour effectuer des opérations sur des fractions, il faut souvent les mettre au même dénominateur.</p>
+    <p><strong>Addition :</strong> Additionne les numérateurs si les dénominateurs sont égaux. Sinon, trouve un dénominateur commun.</p>
+    <p><em>Exemple :</em> 1/4 + 2/4 = (1+2)/4 = 3/4</p>
+    <p><strong>Soustraction :</strong> Même principe que pour l’addition.</p>
+    <p><strong>Multiplication :</strong> Multiplie numérateur par numérateur, dénominateur par dénominateur.</p>
+    <p><em>Exemple :</em> 2/3 × 3/5 = (2×3)/(3×5) = 6/15</p>
+    <p><strong>Division :</strong> Inverse la deuxième fraction et multiplie.</p>
+    <p><em>Exemple :</em> 2/3 ÷ 3/5 = 2/3 × 5/3 = 10/9</p>
+
+    <div class="quiz">
+      <h3>Quiz Opérations</h3>
+      <p>Calcule : 1/2 + 1/3 = ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, false)">2/5</button>
+        <button onclick="quizCheck(this, true)">5/6</button>
+        <button onclick="quizCheck(this, false)">3/6</button>
+        <button onclick="quizCheck(this, false)">1/5</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <div class="quiz">
+      <h3>Quiz Opérations</h3>
+      <p>Calcule : 3/4 × 2/5 = ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, false)">6/20</button>
+        <button onclick="quizCheck(this, true)">3/10</button>
+        <button onclick="quizCheck(this, false)">5/9</button>
+        <button onclick="quizCheck(this, false)">7/9</button>
+      </div>
+      <div class="result"></div>
+    </div>
+  </section>
+
+  <!-- Chapitre Simplification -->
+  <section id="simplification">
+    <h2>Chapitre 3 : Simplification des fractions</h2>
+    <p>La simplification consiste à diviser le numérateur et le dénominateur par leur plus grand commun diviseur (PGCD).</p>
+    <p><em>Exemple :</em> 6/9 peut être simplifié en divisant par 3 : (6 ÷ 3)/(9 ÷ 3) = 2/3</p>
+    <p>Une fraction simplifiée est plus facile à manipuler.</p>
+
+    <div class="quiz">
+      <h3>Quiz Simplification</h3>
+      <p>Quelle est la forme simplifiée de 15/25 ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, false)">3/25</button>
+        <button onclick="quizCheck(this, true)">3/5</button>
+        <button onclick="quizCheck(this, false)">5/3</button>
+        <button onclick="quizCheck(this, false)">15/25</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <div class="quiz">
+      <h3>Quiz Simplification</h3>
+      <p>Quelle est la forme simplifiée de 8/12 ?</p>
+      <div class="options">
+        <button onclick="quizCheck(this, false)">4/6</button>
+        <button onclick="quizCheck(this, true)">2/3</button>
+        <button onclick="quizCheck(this, false)">3/2</button>
+        <button onclick="quizCheck(this, false)">8/12</button>
+      </div>
+      <div class="result"></div>
+    </div>
+  </section>
+</main>
 
 <script>
-let score = 0;
-let totalQuestions = 0;
-
-function loadChapter(chap) {
-  score = 0;
-  totalQuestions = 0;
-  document.getElementById('scoreBox').innerHTML = "";
-
-  const content = {
-    fractions: \`
-      <h2>Chapitre 1 : Les Fractions</h2>
-      <div class="explanation">
-        Une <strong>fraction</strong> représente une partie d’un tout. Par exemple, <strong>1/2</strong> veut dire "une moitié", donc une part sur deux.
-      </div>
-      <div class="explanation">
-        <strong>Addition de fractions :</strong><br> Si les dénominateurs sont les mêmes, on additionne les numérateurs :<br>
-        Exemple : 1/4 + 2/4 = 3/4
-      </div>
-      <div class="explanation">
-        <strong>Multiplication :</strong><br> Multiplie les numérateurs entre eux et les dénominateurs entre eux.<br>
-        Exemple : 2/3 × 3/4 = 6/12 = 1/2
-      </div>
-      <div class="quiz-box">
-        <h3>Quiz</h3>
-        <p>Combien vaut : 1/4 + 2/4 ?</p>
-        <button class="option" onclick="answer(this, '3/4')">3/4</button>
-        <button class="option" onclick="answer(this, '1/2')">1/2</button>
-        <button class="option" onclick="answer(this, '1')">1</button>
-      </div>\`,
-
-    nombres: \`
-      <h2>Chapitre 2 : Nombres Entiers</h2>
-      <div class="explanation">
-        Les <strong>nombres entiers</strong> sont les nombres comme -3, 0, 1, 2, 100... Ils n’ont pas de virgule.
-      </div>
-      <div class="explanation">
-        <strong>Comparer les entiers :</strong><br> Plus un nombre est à droite sur la droite numérique, plus il est grand.
-      </div>
-      <div class="quiz-box">
-        <h3>Quiz</h3>
-        <p>Quel est le plus petit nombre ?</p>
-        <button class="option" onclick="answer(this, '-10')">-10</button>
-        <button class="option" onclick="answer(this, '0')">0</button>
-        <button class="option" onclick="answer(this, '5')">5</button>
-      </div>\`,
-
-    geometrie: \`
-      <h2>Chapitre 3 : Géométrie</h2>
-      <div class="explanation">
-        La <strong>géométrie</strong> étudie les formes comme les triangles, carrés, cercles, etc.
-      </div>
-      <div class="explanation">
-        <strong>Triangle :</strong> 3 côtés.<br>
-        <strong>Carré :</strong> 4 côtés égaux.<br>
-        <strong>Cercle :</strong> pas de côtés, mais un rayon et un diamètre.
-      </div>
-      <div class="quiz-box">
-        <h3>Quiz</h3>
-        <p>Combien de côtés a un triangle ?</p>
-        <button class="option" onclick="answer(this, '3')">3</button>
-        <button class="option" onclick="answer(this, '4')">4</button>
-        <button class="option" onclick="answer(this, '5')">5</button>
-      </div>\`
-  };
-
-  document.getElementById('content').innerHTML = content[chap];
-}
-
-function answer(btn, correct) {
-  const userAnswer = btn.textContent.trim();
-  totalQuestions++;
-  if (userAnswer === correct) {
-    score++;
-    Swal.fire('Bravo !', 'Bonne réponse !', 'success');
-  } else {
-    Swal.fire('Raté !', 'Ce n’est pas la bonne réponse.', 'error');
+  // Affiche le chapitre cliqué et cache les autres
+  function openChapter(id) {
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
   }
-  document.getElementById('scoreBox').innerText = "Score : " + score + " / " + totalQuestions;
-}
+
+  // Gestion des quiz
+  function quizCheck(button, isCorrect) {
+    const options = button.parentNode.querySelectorAll('button');
+    const result = button.parentNode.nextElementSibling;
+
+    options.forEach(btn => {
+      btn.disabled = true;
+      btn.classList.remove('correct', 'incorrect');
+    });
+
+    if (isCorrect) {
+      button.classList.add('correct');
+      result.textContent = "Bravo ! C'est la bonne réponse.";
+      result.style.color = "#2e7d32";
+    } else {
+      button.classList.add('incorrect');
+      result.textContent = "Dommage, ce n’est pas la bonne réponse. Essaie encore.";
+      result.style.color = "#c62828";
+    }
+  }
 </script>
 
 </body>
