@@ -1,1 +1,208 @@
-jhjh
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mathématiques - Cours Interactifs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f8ff, #e6f7ff);
+      color: #003366;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .chapter-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .chapter-btn {
+      background-color: #ffcc00;
+      color: #003366;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .chapter-btn:hover {
+      background-color: #ffc107;
+      transform: scale(1.05);
+    }
+
+    .content {
+      animation: fadeIn 1s;
+    }
+
+    h2 {
+      border-bottom: 3px solid #ffcc00;
+      padding-bottom: 10px;
+    }
+
+    .explanation {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 5px solid #ffcc00;
+      border-radius: 8px;
+    }
+
+    .quiz-box {
+      background-color: #e3f2fd;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .option {
+      display: block;
+      margin: 10px 0;
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .option:hover {
+      background-color: #0056b3;
+    }
+
+    #scoreBox {
+      margin-top: 30px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mathématiques - Cours Interactifs</h1>
+  <p>Choisis ton chapitre pour apprendre avec des explications simples, des exemples, et des quiz amusants !</p>
+</header>
+
+<div class="container">
+  <div class="chapter-menu">
+    <button class="chapter-btn" onclick="loadChapter('fractions')">Chapitre 1 : Les Fractions</button>
+    <button class="chapter-btn" onclick="loadChapter('nombres')">Chapitre 2 : Nombres Entiers</button>
+    <button class="chapter-btn" onclick="loadChapter('geometrie')">Chapitre 3 : Géométrie</button>
+  </div>
+
+  <div id="content" class="content"></div>
+  <div id="scoreBox"></div>
+</div>
+
+<script>
+let score = 0;
+let totalQuestions = 0;
+
+function loadChapter(chap) {
+  score = 0;
+  totalQuestions = 0;
+  document.getElementById('scoreBox').innerHTML = "";
+
+  const content = {
+    fractions: \`
+      <h2>Chapitre 1 : Les Fractions</h2>
+      <div class="explanation">
+        Une <strong>fraction</strong> représente une partie d’un tout. Par exemple, <strong>1/2</strong> veut dire "une moitié", donc une part sur deux.
+      </div>
+      <div class="explanation">
+        <strong>Addition de fractions :</strong><br> Si les dénominateurs sont les mêmes, on additionne les numérateurs :<br>
+        Exemple : 1/4 + 2/4 = 3/4
+      </div>
+      <div class="explanation">
+        <strong>Multiplication :</strong><br> Multiplie les numérateurs entre eux et les dénominateurs entre eux.<br>
+        Exemple : 2/3 × 3/4 = 6/12 = 1/2
+      </div>
+      <div class="quiz-box">
+        <h3>Quiz</h3>
+        <p>Combien vaut : 1/4 + 2/4 ?</p>
+        <button class="option" onclick="answer(this, '3/4')">3/4</button>
+        <button class="option" onclick="answer(this, '1/2')">1/2</button>
+        <button class="option" onclick="answer(this, '1')">1</button>
+      </div>\`,
+
+    nombres: \`
+      <h2>Chapitre 2 : Nombres Entiers</h2>
+      <div class="explanation">
+        Les <strong>nombres entiers</strong> sont les nombres comme -3, 0, 1, 2, 100... Ils n’ont pas de virgule.
+      </div>
+      <div class="explanation">
+        <strong>Comparer les entiers :</strong><br> Plus un nombre est à droite sur la droite numérique, plus il est grand.
+      </div>
+      <div class="quiz-box">
+        <h3>Quiz</h3>
+        <p>Quel est le plus petit nombre ?</p>
+        <button class="option" onclick="answer(this, '-10')">-10</button>
+        <button class="option" onclick="answer(this, '0')">0</button>
+        <button class="option" onclick="answer(this, '5')">5</button>
+      </div>\`,
+
+    geometrie: \`
+      <h2>Chapitre 3 : Géométrie</h2>
+      <div class="explanation">
+        La <strong>géométrie</strong> étudie les formes comme les triangles, carrés, cercles, etc.
+      </div>
+      <div class="explanation">
+        <strong>Triangle :</strong> 3 côtés.<br>
+        <strong>Carré :</strong> 4 côtés égaux.<br>
+        <strong>Cercle :</strong> pas de côtés, mais un rayon et un diamètre.
+      </div>
+      <div class="quiz-box">
+        <h3>Quiz</h3>
+        <p>Combien de côtés a un triangle ?</p>
+        <button class="option" onclick="answer(this, '3')">3</button>
+        <button class="option" onclick="answer(this, '4')">4</button>
+        <button class="option" onclick="answer(this, '5')">5</button>
+      </div>\`
+  };
+
+  document.getElementById('content').innerHTML = content[chap];
+}
+
+function answer(btn, correct) {
+  const userAnswer = btn.textContent.trim();
+  totalQuestions++;
+  if (userAnswer === correct) {
+    score++;
+    Swal.fire('Bravo !', 'Bonne réponse !', 'success');
+  } else {
+    Swal.fire('Raté !', 'Ce n’est pas la bonne réponse.', 'error');
+  }
+  document.getElementById('scoreBox').innerText = "Score : " + score + " / " + totalQuestions;
+}
+</script>
+
+</body>
+</html>
