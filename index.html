@@ -1,63 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wood_Education</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wood Education</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/app.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Bienvenue sur <span class="highlight">Wood_Education</span></h1>
-    <p>Apprends. Progresse. Réussis. Épate le monde.</p>
-    <div class="btn-group">
-      <a href="login.html" class="btn">Connexion Élève</a>
-      <a href="admin.html" class="btn">Connexion Admin</a>
-      <a href="https://wa.me/594694165289" class="btn whatsapp">Me contacter</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="citation">
-      <blockquote>
-        “L’éducation est l’arme la plus puissante pour changer le monde.” — Nelson Mandela
-      </blockquote>
-    </section>
-
-    <section class="selection">
-      <h2>Choisis ta classe</h2>
-      <select id="classe">
-        <option>6e</option>
-        <option>5e</option>
-        <option>4e</option>
-        <option>3e</option>
-        <option>2nde</option>
-        <option>1ère</option>
-        <option>Terminale</option>
-      </select>
-
-      <h2>Choisis ta matière</h2>
-      <select id="matiere">
-        <option>Maths</option>
-        <option>Français</option>
-        <option>Physique-Chimie</option>
-        <option>SVT</option>
-        <option>Histoire-Géo</option>
-        <option>Anglais</option>
-        <option>Philosophie</option>
-        <option>SES</option>
-        <option>Spécialité Maths</option>
-        <option>Spécialité NSI</option>
-      </select>
-      <br><br>
-      <button onclick="saveSelection()" class="btn">Valider</button>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Wood_Education - Gustave Woodly</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <header>
+        <h1>Bienvenue sur Wood Education</h1>
+        <p>Apprends, progresse et réussis !</p>
+        <div class="btn-container">
+            <button onclick="window.location.href='student.html'">Je suis élève</button>
+            <button onclick="window.location.href='admin.html'">Admin</button>
+        </div>
+    </header>
 </body>
 </html>
