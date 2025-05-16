@@ -1,92 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wood_Education</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Styles de base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      line-height: 1.6;
     }
+
     header {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
       text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
       animation: fadeIn 2s ease-in-out;
     }
+
+    header h1 {
+      font-size: 3rem;
+      color: #ffce00;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #f0f0f0;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .section h2 {
+      color: #ffce00;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #eee;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    input, select {
+      background: #fff;
+      color: #000;
+    }
+
+    button {
+      background-color: #ffce00;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e6b800;
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin-top: 20px;
+      color: #ccc;
+    }
+
+    .contact-link {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .container {
-      padding: 20px;
-    }
-    .form-section {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .form-section h2 {
-      margin-top: 0;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    select, input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .contact-section, .quotes-section, .games-section {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    .contact-section a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .quote {
-      font-style: italic;
-      text-align: center;
-      margin: 10px 0;
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .section {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Bienvenue sur Wood_Education</h1>
-    <p>« Tu as le potentiel. Moi, je t’aide à le révéler. »</p>
+    <h1>Wood_Education</h1>
+    <p>Débloquez votre potentiel. Devenez la meilleure version de vous-même.</p>
   </header>
+
   <div class="container">
-    <div class="form-section">
+    <div class="section">
       <h2>Inscription</h2>
       <form>
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required>
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" required>
+        
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" required>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required>
+        <label for="etablissement">Établissement</label>
+        <input type="text" id="etablissement" required>
 
-        <label for="etablissement">Établissement :</label>
-        <input type="text" id="etablissement" name="etablissement" required>
-
-        <label for="niveau">Niveau :</label>
-        <select id="niveau" name="niveau" required>
-          <option value="">--Sélectionnez votre niveau--</option>
+        <label for="niveau">Niveau scolaire</label>
+        <select id="niveau" required>
+          <option value="">-- Choisissez votre niveau --</option>
           <option value="6e">6e</option>
           <option value="5e">5e</option>
           <option value="4e">4e</option>
@@ -96,68 +149,68 @@
           <option value="Terminale">Terminale</option>
         </select>
 
-        <label for="matiere">Matière :</label>
-        <select id="matiere" name="matiere" required>
-          <option value="">--Sélectionnez une matière--</option>
-          <!-- Les options seront ajoutées dynamiquement via JavaScript -->
+        <label for="matiere">Matière</label>
+        <select id="matiere" required>
+          <option value="">-- Sélectionnez une matière --</option>
         </select>
 
-        <button type="submit">S'inscrire</button>
+        <button type="submit">Je m’inscris</button>
       </form>
     </div>
 
-    <div class="contact-section">
-      <h2>Contact</h2>
-      <p>Pour toute question ou demande, n'hésitez pas à me contacter :</p>
-      <p><a href="https://wa.me/594694165289" target="_blank">WhatsApp : +594 694 165289</a></p>
+    <div class="section">
+      <h2>Jeux Éducatifs</h2>
+      <p>Apprends en t’amusant ! Sélectionne ta matière pour débloquer des jeux interactifs.</p>
+      <ul>
+        <li>Quiz de maths, français, histoire-géo, SVT...</li>
+        <li>Jeux de logique, devinettes, mini-jeux...</li>
+      </ul>
     </div>
 
-    <div class="quotes-section">
+    <div class="section">
       <h2>Citation du jour</h2>
-      <p class="quote" id="quote">"L'éducation est l'arme la plus puissante pour changer le monde." – Nelson Mandela</p>
+      <p class="quote" id="quote"></p>
     </div>
 
-    <div class="games-section">
-      <h2>Jeux éducatifs</h2>
-      <p>Des jeux pour chaque matière et niveau seront bientôt disponibles ici.</p>
+    <div class="section">
+      <h2>Contact</h2>
+      <p>Besoin d’aide ? <a class="contact-link" href="https://wa.me/594694165289" target="_blank">Contacte-moi sur WhatsApp</a></p>
     </div>
   </div>
 
   <script>
-    // JavaScript pour gérer les matières selon le niveau sélectionné
-    const niveauSelect = document.getElementById('niveau');
-    const matiereSelect = document.getElementById('matiere');
-
     const matieresParNiveau = {
       '6e': ['Français', 'Maths', 'SVT', 'Histoire-Géo', 'Technologie'],
       '5e': ['Français', 'Maths', 'SVT', 'Histoire-Géo', 'Technologie'],
       '4e': ['Français', 'Maths', 'SVT', 'Histoire-Géo', 'Technologie'],
       '3e': ['Français', 'Maths', 'SVT', 'Histoire-Géo', 'Technologie'],
-      '2nde': ['Français', 'Maths', 'Physique-Chimie', 'SVT', 'Histoire-Géo'],
-      '1ère': ['Français', 'Maths', 'Physique-Chimie', 'SVT', 'Histoire-Géo', 'Spécialité 1', 'Spécialité 2'],
-      'Terminale': ['Philosophie', 'Maths', 'Physique-Chimie', 'SVT', 'Histoire-Géo', 'Spécialité 1', 'Spécialité 2']
+      '2nde': ['Français', 'Maths', 'Physique-Chimie', 'SVT', 'SES'],
+      '1ère': ['Philosophie', 'Maths', 'Physique-Chimie', 'NSI', 'SES', 'HGGSP'],
+      'Terminale': ['Philosophie', 'Maths', 'Physique-Chimie', 'NSI', 'SES', 'HGGSP']
     };
 
-    niveauSelect.addEventListener('change', function() {
-      const niveau = this.value;
-      const matieres = matieresParNiveau[niveau] || [];
-      matiereSelect.innerHTML = '<option value="">--Sélectionnez une matière--</option>';
-      matieres.forEach(function(matiere) {
-        const option = document.createElement('option');
-        option.value = matiere;
-        option.textContent = matiere;
-        matiereSelect.appendChild(option);
+    const niveau = document.getElementById('niveau');
+    const matiere = document.getElementById('matiere');
+
+    niveau.addEventListener('change', () => {
+      const selected = niveau.value;
+      const options = matieresParNiveau[selected] || [];
+      matiere.innerHTML = '<option value="">-- Sélectionnez une matière --</option>';
+      options.forEach(opt => {
+        const el = document.createElement('option');
+        el.value = opt;
+        el.textContent = opt;
+        matiere.appendChild(el);
       });
     });
 
-    // JavaScript pour changer la citation aléatoirement
-    const citations = [
+    const quotes = [
       "L'éducation est l'arme la plus puissante pour changer le monde. – Nelson Mandela",
-      "Apprendre, c'est déposer de l'or dans la banque de son esprit. – Shad Helmstetter",
-      "L'éducation est le passeport pour l'avenir, car demain appartient à ceux qui s'y préparent aujourd'hui. – Malcolm X"
+      "Chaque jour est une nouvelle chance d’apprendre.",
+      "Tu n’échoues jamais tant que tu continues d’essayer. – Gustave Woodly"
     ];
-    const quoteElement = document.getElementById('quote');
-    quoteElement.textContent = citations[Math.floor(Math.random() * citations.length)];
+    document.getElementById('quote').textContent = quotes[Math.floor(Math.random() * quotes.length)];
   </script>
+
 </body>
 </html>
