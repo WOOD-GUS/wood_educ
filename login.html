@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Élève</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Connexion Élève</h1>
+  </header>
+  <main>
+    <form onsubmit="saveStudentInfo(event)">
+      <input type="text" id="prenom" placeholder="Prénom" required><br>
+      <input type="text" id="nom" placeholder="Nom" required><br>
+      <input type="text" id="etablissement" placeholder="Établissement" required><br>
+      <button type="submit" class="btn">Valider</button>
+    </form>
+  </main>
+  <script>
+    function saveStudentInfo(e) {
+      e.preventDefault();
+      const prenom = document.getElementById('prenom').value;
+      const nom = document.getElementById('nom').value;
+      const etab = document.getElementById('etablissement').value;
+      const eleve = { prenom, nom, etab, date: new Date().toLocaleString() };
+
+      let eleves = JSON.parse(localStorage.getItem("eleves")) || [];
+      eleves.push(eleve);
+      localStorage.setItem("eleves", JSON.stringify(eleves));
+      alert("Bienvenue " + prenom + " !");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Suivi des élèves</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Interface Admin - Wood_Education</h1>
+  </header>
+  <main>
+    <h2>Élèves connectés :</h2>
+    <ul id="liste-eleves"></ul>
+
+    <h2>Visites (sélection classe/matière) :</h2>
+    <ul id="liste-visites"></ul>
+  </main>
+  <script>
+    const eleves = JSON.parse(localStorage.getItem("eleves")) || [];
+    const visites = JSON.parse(localStorage.getItem("visites")) || [];
+
+    const ulEleves = document.getElementById("liste-eleves");
+    eleves.forEach(e => {
+      const li = document.createElement("li");
+      li.textContent = `${e.prenom} ${e.nom} - ${e.etab} (${e.date})`;
+      ulEleves.appendChild(li);
+    });
+
+    const ulVisites = document.getElementById("liste-visites");
+    visites.forEach(v => {
+      const li = document.createElement("li");
+      li.textContent = `${v.classe} - ${v.matiere} (${v.date})`;
+      ulVisites.appendChild(li);
+    });
+  </script>
+</body>
+</html>
